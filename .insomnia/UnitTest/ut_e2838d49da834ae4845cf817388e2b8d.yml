@@ -1,0 +1,15 @@
+_id: ut_e2838d49da834ae4845cf817388e2b8d
+type: UnitTest
+parentId: uts_524c3eb42b884290a811bd5bc5ea316f
+modified: 1693469263514
+created: 1693469171523
+requestId: req_6ca4665c76dd4430a0b52b9b6c28bfd5
+name: Check User List response values
+code: |-
+  const response1 = await insomnia.send();
+  expect(response1.status).to.equal(200, "not 200");
+  const body = JSON.parse(response1.data);
+  expect(body).to.be.an('array');
+  expect(body).to.have.lengthOf.greaterThan(0);
+  expect(body[0]).to.have.property('id');
+  expect(body[0]).to.have.property('username');

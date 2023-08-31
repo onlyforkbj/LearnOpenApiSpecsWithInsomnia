@@ -1,0 +1,31 @@
+_id: req_7c121fdae83e44438623a9afd132c0b7
+type: Request
+parentId: wrk_62ffbe5e87d24ed1b4ac5bbf9b2d60c0
+modified: 1693395285152
+created: 1693390306487
+url: "{{ _.base_url }}/users"
+name: Creates a new user
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "balaji",
+    	"score": 35,
+    	"active": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: application/json
+authentication: {}
+metaSortKey: -1693390306487
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

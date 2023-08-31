@@ -1,0 +1,114 @@
+_id: spc_355d818761df432ba597782e79877663
+type: ApiSpec
+parentId: wrk_62ffbe5e87d24ed1b4ac5bbf9b2d60c0
+modified: 1693389956767
+created: 1693384587767
+fileName: Lab API - API fundamentals and design course by SEB
+contents: >
+  openapi: 3.0.1
+
+  info:
+    title: Lab API - Fundamentals of API design and Development Course hosted by SEB
+    version: 1.0.0
+    description: >-
+      This Open API spec is designed during the course, "Fundamentals of API
+      design and Development" hosted by SEB learning team
+    termsOfService: https://seb.se/tos
+    contact:
+      email: support-apis@seb.se
+      name: SEB Support team for APIs
+      url: https://seb.se/support-api
+    license:
+      name: SEB License
+      url: https://seb.se/license
+  servers:
+    - url: http://localhost:3000
+      description: My Local API Server that plays with the local db.json
+    - url: https://my-json-server.typicode.com/bearc0025/api
+      variables: {}
+      description: >-
+        The API Server that is being used for the "The basics of API Design"
+        course hosted by SEB and the Authored by Bear from Texas
+  paths:
+    /users:
+      summary: Endpoint to fetch and create users
+      description: >-
+        This end points operations on users object and helps to fetch the list of
+        users or create a new user depending on the HTTP action used along with
+        it. 
+      get:
+        summary: Fetches the list of users
+        description: >-
+          This fetches all the users from the API in a list format associated with
+          a HTTPGET operation
+        operationId: fetchUsers
+        responses:
+          '200':
+            $ref: '#/components/responses/UserResponseArray'
+          default:
+            description: Default error sameple response
+        tags:
+          - Users
+      post:
+        summary: Creates a new user
+        description: >-
+          Create a new user with the the given information and stores on the server. Don't send id when
+          posting the data
+        operationId: createUser
+        requestBody:
+          $ref: '#/components/requestBodies/UserPostBody'
+        responses:
+          '201':
+            $ref: '#/components/responses/UserResponseBody'
+          default:
+            description: Default error sample response
+        tags:
+          - Users
+  components:
+    responses:
+      UserResponseBody:
+        description: successful response
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FullUser'
+      UserResponseArray:
+        description: User objects
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserArray'
+    requestBodies:
+      UserPostBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostNewUser'
+    schemas:
+      UserArray:
+        type: array
+        items:
+          $ref: '#/components/schemas/FullUser'
+      FullUser:
+        allOf:
+          - type: object
+            properties:
+              id:
+                type: string
+                example: qwerty
+          - $ref: '#/components/schemas/PostNewUser'
+        type: object
+      PostNewUser:
+        type: object
+        properties:
+          username:
+            type: string
+            example: onlyforkbj
+          score:
+            type: integer
+            example: 99
+          active:
+            type: boolean
+            example: true
+contentType: yaml

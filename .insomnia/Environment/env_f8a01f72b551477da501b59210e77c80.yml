@@ -1,0 +1,18 @@
+_id: env_f8a01f72b551477da501b59210e77c80
+type: Environment
+parentId: env_76a990e3eb02abc76343e6a981395198c4d7388e
+modified: 1693390234645
+created: 1693390174226
+name: Local-Json-Server
+data:
+  scheme: http
+  base_path: ""
+  host: localhost:3000
+dataPropertyOrder:
+  "&":
+    - scheme
+    - base_path
+    - host
+color: null
+isPrivate: false
+metaSortKey: 1693390174226
